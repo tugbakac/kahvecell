@@ -1958,6 +1958,30 @@
   color: #183f76;
 }
 
+.demo-phone {
+  width: 100%;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.demo-phone:hover {
+  background: #e6edf6;
+}
+
+.demo-phone:focus-visible {
+  outline: 2px solid #7796bd;
+  outline-offset: 2px;
+}
+
+.demo-phone-action {
+  margin-left: auto;
+  color: #183f76;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .auth-switch {
   margin-top: 21px;
   color: #858f9e;

@@ -133,6 +133,17 @@ export default function AuthPage({ mode = 'login' }) {
                   />
                 </div>
                 <p className="field-hint">Numaran yalnızca giriş ve hesap güvenliği için kullanılır.</p>
+                {!isRegister && (
+                  <button
+                    className="demo-code demo-phone"
+                    type="button"
+                    onClick={() => setPhone('5550000001')}
+                  >
+                    <ShieldCheck size={16} />
+                    <span>Demo telefon numarası: <strong>+905550000001</strong></span>
+                    <span className="demo-phone-action">Doldur</span>
+                  </button>
+                )}
                 {error && <div className="form-error" role="alert">{error}</div>}
                 <button className="button button-primary button-wide" disabled={busy} type="submit">
                   {busy ? 'Gönderiliyor…' : 'Doğrulama kodu gönder'}
