@@ -14,8 +14,8 @@ def create_tables() -> None:
     }
     new_columns = {
         "password_hash": "VARCHAR(255)",
-        "is_verified": "BOOLEAN NOT NULL DEFAULT 0",
-        "profile_completed": "BOOLEAN NOT NULL DEFAULT 0",
+        "is_verified": "BOOLEAN NOT NULL DEFAULT FALSE",
+        "profile_completed": "BOOLEAN NOT NULL DEFAULT FALSE",
         "public_id": "VARCHAR(36)",
     }
     missing_columns = {

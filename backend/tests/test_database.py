@@ -2,8 +2,24 @@ from fastapi.testclient import TestClient
 from sqlalchemy import inspect
 from sqlalchemy.orm import configure_mappers
 
-from app.db.session import engine
+from app.db.session import engine, resolve_database_url
 from app.main import app
+
+
+def test_database_url_defaults_to_sqlite(tmp_path) -> None:
+    url = resolve_database_url(None, tmp_path / "kahvecell.db")
+
+    assert url.drivername == "sqlite"
+    assert url.database == str(tmp_path / "kahvecell.db")
+
+
+def test_postgres_url_uses_psycopg_driver() -> None:
+    url = resolve_database_url(
+        "postgresql://user:password@db.example.test/kahvecell?sslmode=require"
+    )
+
+    assert url.drivername == "postgresql+psycopg"
+    assert url.query["sslmode"] == "require"
 
 
 def test_startup_creates_sqlite_tables_and_relationships() -> None:
